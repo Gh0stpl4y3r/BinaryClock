@@ -68,8 +68,6 @@ void loop() {
   int currentday = CurrentDateTime.day();
   if (currentday != OldDay)
   {
-    Serial.print(OldDay);
-    Serial.println(currentday);
     OldDay = currentday;
     int currentMonth = CurrentDateTime.month();
     DisplayBinary(currentMonth, 0, 4, LEDDateStrip);
