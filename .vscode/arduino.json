@@ -1,0 +1,6 @@
+{
+    "configuration": "cpu=atmega328",
+    "board": "arduino:avr:nano",
+    "port": "/dev/ttyS0",
+    "sketch": "Binäruhr/sketch/sketch.ino"
+}
