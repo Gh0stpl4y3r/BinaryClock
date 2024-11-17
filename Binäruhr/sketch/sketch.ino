@@ -76,6 +76,7 @@ void loop() {
     DisplayBinary(currentday, 4, 5, LEDDateStrip);
     delay(1000); 
   }
+}
 
 void DisplayBinary (int Number, int Offset, int LedCount, Adafruit_NeoPixel &p_Strip)
 {
