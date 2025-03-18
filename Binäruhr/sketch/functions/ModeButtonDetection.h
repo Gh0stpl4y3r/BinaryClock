@@ -5,7 +5,7 @@
 #include <RTClib.h>
 #include <ezButton.h>
 
-extern bool IsEditMode;
-int8 registerButtonPress(RTC_DS1307 Rtc, ezButton buttonMode);
+
+void registerButtonPress(RTC_DS1307 Rtc, ezButton buttonMode, bool *EditMode);
 
 #endif

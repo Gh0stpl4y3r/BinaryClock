@@ -2,14 +2,13 @@
 
 #define LONGBUTTONPRESS 3
 
+static bool isHolding = false;
 
 static DateTime startPressed;
 static DateTime released;
 
-int8 registerButtonPress(RTC_DS1307 Rtc, ezButton buttonMode)
+void registerButtonPress(RTC_DS1307 Rtc, ezButton buttonMode, bool *IsEditMode)
 {
-    static bool isHolding = false;
-
 
     if (buttonMode.isPressed() && !isHolding)
     {
@@ -23,13 +22,12 @@ int8 registerButtonPress(RTC_DS1307 Rtc, ezButton buttonMode)
 
         if (buttonPressedFor.totalseconds() >= LONGBUTTONPRESS)
         {
-            IsEditMode = !IsEditMode;
+            *IsEditMode = !IsEditMode;
         }
-        
     }
     if (buttonMode.isReleased())
     {
         isHolding = false;
     }
-    
+
 }

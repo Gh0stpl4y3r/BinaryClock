@@ -2,7 +2,7 @@
 #include <RTClib.h>
 #include <enums.h>
 #include <displayBinary.h>
-#include <ModeButtonDetection.h>
+#include <EditMode.h>
 
 // refer to this https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-use
 Adafruit_NeoPixel LEDTimeStrip(LEDCountTime, LEDPinTime);
@@ -13,12 +13,12 @@ RTC_DS1307 Rtc;
 int8 OldDay;
 int8 OldMinute;
 
-bool IsEditMode = false;
-EditState State = NORMAL;
+bool *p_EditMode = new bool(false);
+EditState State = MINUTE;
 
-ezButton buttonMode(BUTTON_MODE_PIN);
-ezButton buttonDec(BUTTON_DEC_PIN);
-ezButton buttonInc(BUTTON_INC_PIN);
+ezButton buttonMode(BUTTON_MODE_PIN, true);
+ezButton buttonDec(BUTTON_DEC_PIN, true);
+ezButton buttonInc(BUTTON_INC_PIN, true);
 
 void setup()
 {
@@ -55,14 +55,7 @@ void setup()
 void loop()
 {
 
-  buttonMode.loop();
-  buttonDec.loop(),
-  buttonInc.loop();
-
-  registerButtonPress(Rtc, buttonMode);
-
-
-
+  handleEditMode(Rtc, buttonMode, buttonInc, buttonDec, p_EditMode, State);
 
   DateTime CurrentDateTime = Rtc.now();
   int8 CurrentMinute = CurrentDateTime.minute();
@@ -76,7 +69,9 @@ void loop()
   }
   int8 Hour = CurrentDateTime.hour();
   if (Hour > 12)
+  {
     Hour -= 12;
+  }
   DisplayBinary(CurrentMinute, 0, 6, LEDTimeStrip);
   DisplayBinary(Hour, 6, 4, LEDTimeStrip);
   OldMinute = CurrentMinute;

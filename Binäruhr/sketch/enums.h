@@ -3,7 +3,7 @@
 
 enum EditState
 {
-    NORMAL,
+    
     MINUTE,
     HOUR,
     DAY,
