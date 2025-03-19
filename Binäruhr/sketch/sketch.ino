@@ -1,8 +1,8 @@
-#include <defines.h>
+#include "defines.h"
 #include <RTClib.h>
-#include <enums.h>
-#include <displayBinary.h>
-#include <EditMode.h>
+#include "enums.h"
+#include "displayBinary.h"
+#include "EditMode.h"
 
 // refer to this https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-use
 Adafruit_NeoPixel LEDTimeStrip(LEDCountTime, LEDPinTime);

@@ -1,4 +1,4 @@
-#include <ModeButtonDetection.h>
+#include "ModeButtonDetection.h"
 
 #define LONGBUTTONPRESS 3
 
@@ -29,5 +29,4 @@ void registerButtonPress(RTC_DS1307 Rtc, ezButton buttonMode, bool *IsEditMode)
     {
         isHolding = false;
     }
-
 }

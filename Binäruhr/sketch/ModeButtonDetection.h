@@ -1,7 +1,7 @@
 #ifndef MODEBUTTONDETECTION_H
 #define MODEBUTTONDETECTION_H
 
-#include <defines.h>
+#include "defines.h"
 #include <RTClib.h>
 #include <ezButton.h>
 
